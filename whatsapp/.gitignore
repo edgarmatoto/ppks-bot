@@ -1,0 +1,8 @@
+.env
+node_modules
+.wwebjs_auth
+.wwebjs_cache
+whatsapp_qr/qr-image.svg
+pnpm-lock.yaml
+package-lock.json
+whatsapp_qr

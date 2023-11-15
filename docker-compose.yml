@@ -1,0 +1,37 @@
+version: "1"
+services:
+  db:
+    image: postgres:15
+    restart: always
+    ports:
+      - "35432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1213"
+      POSTGRES_DB: ppks
+    volumes:
+        - ./ppks.sql:/docker-entrypoint-initdb.d/ppks.sql
+
+  tele:
+    build:
+      context: ./telegram
+      dockerfile: Dockerfile
+    container_name: tele_bot_container
+    restart: on-failure
+    image: tele_bot_image
+    depends_on:
+      - db
+    ports:
+      - "5001:5000"
+
+  wa:
+    build:
+      context: ./whatsapp
+      dockerfile: Dockerfile
+    container_name: wa_bot_container
+    restart: on-failure
+    image: wa_bot_image
+    depends_on:
+      - db
+    ports:
+      - "3001:3000"
