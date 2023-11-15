@@ -1,6 +1,5 @@
 import DatabaseService from '../service/DatabaseService.js';
 import EmailService from '../service/EmailService.js';
-import PromptService from '../service/PromptService.js';
 
 async function handleMessage(ctx) {
   const messageBody = ctx.message.text.toLowerCase();
