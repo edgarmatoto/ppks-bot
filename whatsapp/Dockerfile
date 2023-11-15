@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y gconf-service libgbm-dev libasound2 lib
 WORKDIR /app
 
 COPY ./package.json ./
-COPY ./package-lock.json ./
 RUN npm install
 COPY . .
 CMD [ "npm", "start" ]
